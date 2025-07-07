@@ -1,0 +1,16 @@
+{
+  "stocks": [
+    "RELIANCE", "TCS", "HDFCBANK", "INFY", "HINDUNILVR",
+    "ICICIBANK", "SBIN", "BHARTIARTL", "ITC", "KOTAKBANK",
+    "LT", "ASIANPAINT", "AXISBANK", "MARUTI", "TITAN"
+  ],
+  "alert_settings": {
+    "volume_threshold": 3.0,
+    "price_change_threshold": 5.0,
+    "momentum_window": 15,
+    "alert_cooldown": 300,
+    "max_alerts_per_hour": 5
+  },
+  "exchanges": ["NSE", "BSE"],
+  "default_exchange": "NSE"
+}

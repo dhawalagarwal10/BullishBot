@@ -1,0 +1,28 @@
+# requirements.txt
+# MCP Framework
+mcp==1.0.0
+
+# upstox API
+upstox-python-sdk==2.8.0
+
+# web and HTTP
+requests==2.31.0
+websocket-client==1.6.4
+
+# data handling
+pandas==2.1.4
+numpy==1.24.3
+
+# database
+sqlite3  # built-in with Python
+
+# async and threading
+asyncio  # built-in with Python
+threading  # built-in with Python
+
+# logging and utilities
+python-dotenv==1.0.0
+schedule==1.2.0
+
+# date and time handling
+pytz==2023.3
