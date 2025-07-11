@@ -79,18 +79,18 @@ cp .env.example .env
 ### Basic Trading Commands
 
 ```
-"Buy 100 shares of Apple"
-"Sell my Tesla position"
-"What's the current price of Microsoft?"
+"Buy 100 shares of RVNL"
+"Sell my ITC position"
+"What's the current price of ADANI GREEN?"
 "Show me my portfolio"
-"Place a limit order for Google at $150"
+"Place a limit order for YES BANK at Rs. 15000"
 ```
 
 ### Advanced Operations
 
 ```
-"Set a stop loss at 5% below current price for my Amazon shares"
-"Buy $1000 worth of Netflix"
+"Set a stop loss at 5% below current price for my IRFC shares"
+"Buy Rs. 10000 worth of POWER GRID"
 "What's the market sentiment for crypto today?"
 "Show me the top gainers in tech sector"
 ```
@@ -99,8 +99,8 @@ cp .env.example .env
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Claude Desktop │────│   BullishBot    │────│  Trading API    │
-│   (Chat Interface)│    │  (Core Logic)   │    │  (Execution)    │
+│ Claude Desktop  │────│   BullishBot    │────│  Trading API    │
+│(Chat Interface) │    │  (Core Logic)   │    │  (Execution)    │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                               │
                        ┌─────────────────┐
