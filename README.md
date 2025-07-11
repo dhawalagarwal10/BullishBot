@@ -204,14 +204,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Trading API Providers** for reliable market access
 - **Open Source Community** for the amazing libraries and tools
 
-## 📞 Support
-
-Having issues? We're here to help:
-
-- **Issues**: [GitHub Issues](https://github.com/dhawalagarwal10/BullishBot/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/dhawalagarwal10/BullishBot/discussions)
-- **Email**: bullishbot@example.com
-
 ---
 
 <div align="center">
