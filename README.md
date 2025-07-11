@@ -41,16 +41,16 @@ Built with enterprise-grade security practices to protect your trading activitie
 ### Installation
 
 ```bash
-# Clone the repository
+# clone the repository
 git clone https://github.com/dhawalagarwal10/BullishBot.git
 
-# Navigate to project directory
+# navigate to project directory
 cd BullishBot
 
-# Install dependencies
+# install dependencies
 pip install -r requirements.txt
 
-# Set up environment variables
+# set up environment variables
 cp .env.example .env
 ```
 
@@ -58,7 +58,7 @@ cp .env.example .env
 
 1. **API Keys Setup**
    ```bash
-   # Edit your .env file
+   # edit your .env file
    TRADING_API_KEY=your_trading_api_key_here
    TRADING_API_SECRET=your_trading_api_secret_here
    CLAUDE_API_KEY=your_claude_api_key_here
@@ -130,7 +130,7 @@ BullishBot implements several safety measures:
 ### Custom Trading Strategies
 
 ```python
-# Example: Adding a custom strategy
+# example: adding a custom strategy
 from bullishbot.strategies import BaseStrategy
 
 class MomentumStrategy(BaseStrategy):
@@ -142,7 +142,7 @@ class MomentumStrategy(BaseStrategy):
 ### Webhook Integration
 
 ```python
-# Set up webhooks for external signals
+# set up webhooks for external signals
 @app.route('/webhook', methods=['POST'])
 def handle_webhook():
     signal = request.json
@@ -163,16 +163,16 @@ We welcome contributions! Here's how you can help:
 ### Development Setup
 
 ```bash
-# Install development dependencies
+# install development dependencies
 pip install -r requirements-dev.txt
 
-# Run tests
+# run tests
 pytest tests/
 
-# Run linting
+# run linting
 flake8 bullishbot/
 
-# Format code
+# format code
 black bullishbot/
 ```
 
