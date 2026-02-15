@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venvScriptspython.exe -c \"import mcp; print\\(mcp.__version__\\)\")",
+      "Bash(.venvScriptspython.exe -c \"import mcp; print\\(dir\\(mcp\\)\\)\")",
+      "Bash(cmd /c:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(dir /s \"c:\\\\Users\\\\dhawa\\\\OneDrive\\\\Desktop\\\\BullishBot\")"
+    ]
+  }
+}

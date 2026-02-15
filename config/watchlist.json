@@ -1,0 +1,25 @@
+{
+  "stocks": [
+    "RELIANCE", "TCS", "HDFCBANK", "INFY", "HINDUNILVR",
+    "ICICIBANK", "SBIN", "BHARTIARTL", "ITC", "KOTAKBANK",
+    "LT", "ASIANPAINT", "AXISBANK", "MARUTI", "TITAN"
+  ],
+  "alert_settings": {
+    "volume_threshold": 3.0,
+    "price_change_threshold": 5.0,
+    "momentum_window": 15,
+    "alert_cooldown": 300,
+    "max_alerts_per_hour": 5,
+    "min_signal_confidence": 40,
+    "analysis_interval_seconds": 60,
+    "signal_cooldown_seconds": 300,
+    "enable_news_analysis": true
+  },
+  "exchanges": ["NSE", "BSE"],
+  "default_exchange": "NSE",
+  "index_instruments": ["NIFTY50", "NIFTYBANK"],
+  "paper_trading": {
+    "enabled": true,
+    "starting_cash": 1000000
+  }
+}

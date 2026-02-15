@@ -1,0 +1,20 @@
+# MCP Framework
+mcp==1.0.0
+
+# Upstox API
+upstox-python-sdk>=2.9.0
+
+# Web and HTTP
+requests==2.31.0
+websocket-client==1.6.4
+
+# Data handling
+pandas==2.1.4
+numpy==1.24.3
+
+# Logging and utilities
+python-dotenv==1.0.0
+schedule==1.2.0
+
+# Date and time handling
+pytz==2023.3

@@ -1,0 +1,105 @@
+# API Credentials and Sensitive Data
+.env
+*.env
+config/upstox_config.json
+config/telegram_config.json
+*.key
+*.secret
+access_token.txt
+nul
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+log/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+data/trades.db
+data/mock_trades.db
+
+# Claude Desktop Config (contains paths)
+config/claude_desktop_config.json
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Test files
+test_*.py
+*_test.py
+quick_test*.py
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
