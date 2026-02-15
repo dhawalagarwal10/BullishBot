@@ -59,6 +59,7 @@ python setup.py
 ### configuration
 
 1. create a `.env` file in the root:
+
 ```
 UPSTOX_API_KEY=your_api_key
 UPSTOX_API_SECRET=your_secret
@@ -68,6 +69,7 @@ ENVIRONMENT=development
 ```
 
 2. create `config/upstox_config.json`:
+
 ```json
 {
   "api_key": "your_api_key",
@@ -86,6 +88,7 @@ ENVIRONMENT=development
 ```
 
 3. create `config/telegram_config.json`:
+
 ```json
 {
   "bot_token": "your_telegram_bot_token",
@@ -106,6 +109,7 @@ ENVIRONMENT=development
 ### setting up Claude Desktop
 
 copy the contents of `config/claude_desktop_config.json` into your Claude Desktop config:
+
 - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 - Mac: `~/Library/Application Support/Claude/claude_desktop_config.json`
 
@@ -114,6 +118,7 @@ then restart Claude Desktop.
 ### running
 
 **start the telegram bot and all background services:**
+
 ```bash
 python start_bot.py
 ```
@@ -122,18 +127,18 @@ python start_bot.py
 
 ## telegram commands
 
-| command | what it does |
-|---------|-------------|
-| `/start` | shows help and available commands |
-| `/portfolio` | your current holdings and P&L |
-| `/quote RELIANCE` | get current price for a stock |
-| `/signals` | recent trading signals |
-| `/status` | system status and uptime |
-| `/analyze RELIANCE` | technical analysis for a stock |
-| `/scan` | scan for trading opportunities |
-| `/watchlist` | manage your watchlist |
-| `/news` | latest financial news |
-| `/alerts` | your alert settings |
+| command             | what it does                      |
+| ------------------- | --------------------------------- |
+| `/start`            | shows help and available commands |
+| `/portfolio`        | your current holdings and P&L     |
+| `/quote RELIANCE`   | get current price for a stock     |
+| `/signals`          | recent trading signals            |
+| `/status`           | system status and uptime          |
+| `/analyze RELIANCE` | technical analysis for a stock    |
+| `/scan`             | scan for trading opportunities    |
+| `/watchlist`        | manage your watchlist             |
+| `/news`             | latest financial news             |
+| `/alerts`           | your alert settings               |
 
 ## claude desktop commands
 
@@ -185,4 +190,12 @@ BullishBot/
 
 this is a personal project. trading involves risk. don't blame the bot if you lose money - it's called BullishBot, not ProfitableBot.
 
-not financial advice. use at your own risk.
+not a financial advicer. use at your own risk.
+
+---
+
+made by a trader who got tired of clicking buttons.
+
+[star this repo](https://github.com/dhawalagarwal10/BullishBot) if you find it useful · [report a bug](https://github.com/dhawalagarwal10/BullishBot/issues) · [request a feature](https://github.com/dhawalagarwal10/BullishBot/issues)
+
+_the market can stay irrational longer than you can stay solvent. trade responsibly._
