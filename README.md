@@ -1,221 +1,188 @@
-# 🐂 BullishBot
+# BullishBot
 
-_Because clicking through trading apps is so 2023._
+a trading assistant that connects Claude Desktop and Telegram with Upstox. you can trade, monitor your portfolio, get alerts, and scan for opportunities - all through chat.
 
-**Trade stocks by chatting with Claude Desktop using natural language.**
+> always optimistic about your losses
 
----
+## what it does
 
-## 🚀 What is BullishBot?
+- **Claude Desktop integration** - talk to Claude in natural language and it places orders, checks prices, analyzes stocks through MCP tools
+- **Telegram bot** - get real-time alerts, check portfolio, scan markets, all from your phone
+- **market radar** - scans NSE stocks in the background and flags unusual volume/price moves
+- **portfolio guard** - monitors your holdings and alerts you on big P&L changes
+- **news watcher** - tracks financial news for your watchlist and holdings, sends urgent alerts
+- **opportunity scanner** - finds trading setups based on technical signals
+- **paper trading** - test strategies without risking real money
+- **technical analysis** - RSI, MACD, moving averages, trend detection, all built in
 
-BullishBot revolutionizes the way you interact with financial markets. Instead of navigating complex trading interfaces, simply chat with your bot using everyday language. Say "Buy 10 shares of RELIANCE" and watch your order get placed automatically. It's trading made conversational.
+## how it works
 
-> **Always optimistic about your losses** 📈
+there are two main pieces:
 
-## ✨ Key Features
+1. **MCP Server** (`src/mcp_server.py`) - runs inside Claude Desktop. this is how Claude talks to Upstox. you ask Claude to buy something, it calls the MCP tools, order gets placed.
 
-**🗣️ Natural Language Trading**  
-No more clicking through menus. Just tell BullishBot what you want to trade in plain English.
+2. **Telegram Bot** (`start_bot.py`) - runs separately. starts up all the background services (market radar, portfolio guard, news watcher, signal monitor) and connects them to Telegram so you get alerts on your phone.
 
-**⚡ Lightning Fast Execution**  
-Direct integration with trading APIs ensures your orders are processed instantly.
+```
+Claude Desktop  --->  MCP Server  --->  Upstox API
+                                            ^
+Telegram Bot  ---+---> Signal Monitor       |
+                 +---> Portfolio Guard  -----+
+                 +---> Market Radar    -----+
+                 +---> News Watcher
+                 +---> Opportunity Scanner
+```
 
-**🧠 Claude Desktop Integration**  
-Leverages the power of Claude's language understanding for seamless communication.
+## setup
 
-**📊 Real-time Market Data**  
-Stay informed with live price updates and market information.
+### prerequisites
 
-**🔐 Secure & Reliable**  
-Built with enterprise-grade security practices to protect your trading activities.
+- python 3.8+
+- an Upstox account with API access
+- Claude Desktop (for the MCP integration)
+- a Telegram bot token (talk to @BotFather)
 
-## 🎯 Quick Start
-
-### Prerequisites
-
-- Python 3.8 or higher
-- Claude Desktop installed
-- Valid trading account with API access
-- Basic understanding of financial markets
-
-### Installation
+### installation
 
 ```bash
-# clone the repository
 git clone https://github.com/dhawalagarwal10/BullishBot.git
-
-# navigate to project directory
 cd BullishBot
-
-# install dependencies
 pip install -r requirements.txt
-
-# set up environment variables
-cp .env.example .env
 ```
 
-### Configuration
-
-1. **API Keys Setup**
-
-   ```bash
-   # edit your .env file
-   TRADING_API_KEY=your_trading_api_key_here
-   TRADING_API_SECRET=your_trading_api_secret_here
-   CLAUDE_API_KEY=your_claude_api_key_here
-   ```
-
-2. **Initialize the Bot**
-
-   ```bash
-   python bullishbot.py --setup
-   ```
-
-3. **Start Trading**
-   ```bash
-   python bullishbot.py
-   ```
-
-## 💬 Usage Examples
-
-### Basic Trading Commands
-
-```
-"Buy 100 shares of RVNL"
-"Sell my ITC position"
-"What's the current price of ADANI GREEN?"
-"Show me my portfolio"
-"Place a limit order for YES BANK at Rs. 15000"
-```
-
-### Advanced Operations
-
-```
-"Set a stop loss at 5% below current price for my IRFC shares"
-"Buy Rs. 10000 worth of POWER GRID"
-"What's the market sentiment for crypto today?"
-"Show me the top gainers in tech sector"
-```
-
-## 🏗️ Architecture
-
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│ Claude Desktop  │────│   BullishBot    │────│  Trading API    │
-│(Chat Interface) │    │  (Core Logic)   │    │  (Execution)    │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-                              │
-                       ┌─────────────────┐
-                       │  Market Data    │
-                       │    Provider     │
-                       └─────────────────┘
-```
-
-## 🛡️ Security & Risk Management
-
-BullishBot implements several safety measures:
-
-- **Position Limits**: Automatic checks to prevent over-exposure
-- **Market Hours Validation**: Only trades during market hours
-- **Confirmation Prompts**: Double-check for large orders
-- **Error Handling**: Graceful handling of API failures and network issues
-
-## 📈 Supported Markets
-
-- **Equity Markets**: NSE, BSE (Indian Stock Exchanges)
-- **US Markets**: NYSE, NASDAQ
-- **Cryptocurrencies**: Major cryptocurrencies via supported exchanges
-- **Forex**: Major currency pairs
-
-## 🔧 Advanced Configuration
-
-### Custom Trading Strategies
-
-```python
-# example: adding a custom strategy
-from bullishbot.strategies import BaseStrategy
-
-class MomentumStrategy(BaseStrategy):
-    def analyze(self, symbol):
-        # Your strategy logic here
-        return self.generate_signal(symbol)
-```
-
-### Webhook Integration
-
-```python
-# set up webhooks for external signals
-@app.route('/webhook', methods=['POST'])
-def handle_webhook():
-    signal = request.json
-    bullishbot.process_signal(signal)
-    return "OK"
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Setup
+or run the setup script which creates everything for you:
 
 ```bash
-# install development dependencies
-pip install -r requirements-dev.txt
-
-# run tests
-pytest tests/
-
-# run linting
-flake8 bullishbot/
-
-# format code
-black bullishbot/
+python setup.py
 ```
 
-## 📊 Performance Metrics
+### configuration
 
-BullishBot tracks various performance indicators:
+1. create a `.env` file in the root:
+```
+UPSTOX_API_KEY=your_api_key
+UPSTOX_API_SECRET=your_secret
+UPSTOX_ACCESS_TOKEN=your_access_token
+LOG_LEVEL=INFO
+ENVIRONMENT=development
+```
 
-- **Execution Speed**: Average order execution time
-- **Success Rate**: Percentage of successful trades
-- **P&L Tracking**: Real-time profit and loss monitoring
-- **Risk Metrics**: VaR, drawdown, and exposure analysis
+2. create `config/upstox_config.json`:
+```json
+{
+  "api_key": "your_api_key",
+  "api_secret": "your_secret",
+  "redirect_uri": "http://localhost:8080",
+  "base_url": "https://api.upstox.com",
+  "max_order_value": 50000,
+  "confirm_threshold": 10000,
+  "auto_login": true,
+  "market_hours": {
+    "start": "09:15",
+    "end": "15:30",
+    "timezone": "Asia/Kolkata"
+  }
+}
+```
 
-## 🚨 Disclaimer
+3. create `config/telegram_config.json`:
+```json
+{
+  "bot_token": "your_telegram_bot_token",
+  "allowed_chat_ids": [your_chat_id],
+  "notifications": {
+    "signals": true,
+    "min_signal_confidence": 50,
+    "portfolio_alerts": true,
+    "pnl_change_threshold_percent": 5.0,
+    "system_alerts": true
+  },
+  "polling_interval_seconds": 10
+}
+```
 
-**Important**: BullishBot is a tool for educational and research purposes.
+4. edit `config/watchlist.json` to add the stocks you want to track
 
-- **Financial Risk**: Trading involves substantial risk of loss
-- **Not Financial Advice**: This software does not provide investment advice
-- **Use at Your Own Risk**: Always understand the risks before trading
-- **Regulatory Compliance**: Ensure compliance with local financial regulations
+### setting up Claude Desktop
 
-## 📝 License
+copy the contents of `config/claude_desktop_config.json` into your Claude Desktop config:
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+- Mac: `~/Library/Application Support/Claude/claude_desktop_config.json`
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+then restart Claude Desktop.
 
-## 🙏 Acknowledgments
+### running
 
-- **Claude by Anthropic** for the powerful language model
-- **Trading API Providers** for reliable market access
-- **Open Source Community** for the amazing libraries and tools
+**start the telegram bot and all background services:**
+```bash
+python start_bot.py
+```
 
----
+**the MCP server** starts automatically when Claude Desktop launches (if you set up the config correctly).
 
-<div align="center">
+## telegram commands
 
-**Made with ❤️ by trader, for traders**
+| command | what it does |
+|---------|-------------|
+| `/start` | shows help and available commands |
+| `/portfolio` | your current holdings and P&L |
+| `/quote RELIANCE` | get current price for a stock |
+| `/signals` | recent trading signals |
+| `/status` | system status and uptime |
+| `/analyze RELIANCE` | technical analysis for a stock |
+| `/scan` | scan for trading opportunities |
+| `/watchlist` | manage your watchlist |
+| `/news` | latest financial news |
+| `/alerts` | your alert settings |
 
-[⭐ Star this repo](https://github.com/dhawalagarwal10/BullishBot) • [🐛 Report Bug](https://github.com/dhawalagarwal10/BullishBot/issues) • [💡 Request Feature](https://github.com/dhawalagarwal10/BullishBot/issues)
+## claude desktop commands
 
-</div>
+just talk naturally. some examples:
 
----
+- "what's the price of RELIANCE?"
+- "buy 10 shares of INFY"
+- "show my portfolio"
+- "analyze TCS for me"
+- "what's the market sentiment today?"
+- "check for trading opportunities"
+- "show me paper trade history"
 
-_Remember: The market can remain irrational longer than you can remain solvent. Trade responsibly! 📊_
+## project structure
+
+```
+BullishBot/
+├── start_bot.py              # launches telegram bot + all services
+├── setup.py                  # first-time setup script
+├── requirements.txt
+├── config/
+│   ├── upstox_config.json    # upstox API config
+│   ├── telegram_config.json  # telegram bot config
+│   ├── watchlist.json        # stocks to monitor
+│   └── instrument_keys.json  # NSE instrument mappings
+├── src/
+│   ├── mcp_server.py         # Claude Desktop MCP integration
+│   ├── broker_client.py      # Upstox API wrapper
+│   ├── technical_analysis.py # RSI, MACD, moving averages etc
+│   ├── market_radar.py       # background market scanner
+│   ├── portfolio_guard.py    # holdings monitor + alerts
+│   ├── news_watcher.py       # financial news tracker
+│   ├── news_analyzer.py      # news sentiment analysis
+│   ├── opportunity_scanner.py # trading setup detection
+│   ├── paper_trader.py       # paper trading engine
+│   ├── realtime_streamer.py  # live market data buffer
+│   ├── database.py           # SQLite database layer
+│   ├── instrument_resolver.py # stock symbol resolution
+│   ├── notification_manager.py # notification routing
+│   └── telegram_bot/
+│       ├── bot.py            # telegram command handlers
+│       ├── signal_monitor.py # polls DB, pushes signals to telegram
+│       └── formatters.py     # message formatting
+├── data/                     # databases (gitignored)
+└── logs/                     # log files (gitignored)
+```
+
+## disclaimer
+
+this is a personal project. trading involves risk. don't blame the bot if you lose money - it's called BullishBot, not ProfitableBot.
+
+not financial advice. use at your own risk.
