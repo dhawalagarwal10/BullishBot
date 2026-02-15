@@ -190,7 +190,7 @@ BullishBot/
 
 this is a personal project. trading involves risk. don't blame the bot if you lose money - it's called BullishBot, not ProfitableBot.
 
-not a financial advicer. use at your own risk.
+not a financial advisor. use at your own risk.
 
 ---
 
